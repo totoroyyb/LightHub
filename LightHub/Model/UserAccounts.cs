@@ -11,7 +11,7 @@ namespace LightHub.Model
     public class UserAccounts
     {
         public static List<User> userAccountsList = new List<User>();
-        private static GitHubClient client = new GitHubClient(new ProductHeaderValue(Const.productHeader));
+        public static GitHubClient client = new GitHubClient(new ProductHeaderValue(Const.productHeader));
 
         public static void AddUserAccount(User user)
         {
@@ -55,6 +55,11 @@ namespace LightHub.Model
         {
             string codeStr = "code=";
             return fullStr.Substring(fullStr.IndexOf(codeStr) + codeStr.Length);
+        }
+
+        public static void SetClientCredential(User user)
+        {
+            client.Credentials = new Credentials(user.accessToken);
         }
     }
 }

@@ -23,6 +23,12 @@ namespace LightHub
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            LoadSettings();
+        }
+
+        private void LoadSettings()
+        {
+            Settings.ReadUserAccountsSetting();
         }
 
         /// <summary>
@@ -90,13 +96,13 @@ namespace LightHub
             deferral.Complete();
         }
 
-        protected override void OnActivated(IActivatedEventArgs args)
+        protected async override void OnActivated(IActivatedEventArgs args)
         {
             if (args.Kind == ActivationKind.Protocol)
             {
                 ProtocolActivatedEventArgs eventArgs = args as ProtocolActivatedEventArgs;
 
-                ActivateHandler.HandleUriLaunch(eventArgs.Uri.AbsoluteUri);
+                await ActivateHandler.HandleUriLaunch(eventArgs.Uri.AbsoluteUri);
             }
         }
     }

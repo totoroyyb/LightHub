@@ -38,22 +38,23 @@ namespace LightHub
             UserAccounts.CreateOauthenUri();
         }
 
-        //public async Task<ActionResult> Authorize(string code, string state)
-        //{
-        //    if (String.IsNullOrEmpty(code))
-        //        return RedirectToAction("Index");
-
-        //    //var expectedState = Session["CSRF:State"] as string;
-        //    //if (state != expectedState) throw new InvalidOperationException("SECURITY FAIL!");
-        //    //Session["CSRF:State"] = null;
-        //    return RedirectToAction("Index");
-        //}
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            string tokenString = UserAccounts.userAccountsList[0].GetAccessToken();
+            string tokenString = UserAccounts.userAccountsList[0].accessToken;
         }
 
-        
+        private async void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            UserAccounts.SetClientCredential(UserAccounts.userAccountsList[0]);
+            var repo = await UserAccounts.client.Repository.GetAllForCurrent();
+        }
+
+        private async void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            UserAccounts.SetClientCredential(UserAccounts.userAccountsList[0]);
+            var user = await UserAccounts.client.User.Current();
+            var test = await UserAccounts.client.Activity.Feeds.GetFeeds();
+            var test1 = await UserAccounts.client.Activity.Notifications.GetAllForCurrent();
+        }
     }
 }

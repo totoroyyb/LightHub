@@ -12,7 +12,7 @@ namespace LightHub.Helper
     {
         //Return 0 means generate and store the access token successfully
         //Return -1 means somethings go wrong
-        public static int HandleUriLaunch(string uriStr)
+        public async static Task<int> HandleUriLaunch(string uriStr)
         {
             string strWithoutPrefix = uriStr.Remove(0, Const.callBackPrefix.Length);
             if (!string.IsNullOrEmpty(strWithoutPrefix))
@@ -23,7 +23,7 @@ namespace LightHub.Helper
                     string commandStr = strWithoutPrefix.Remove(index);
                     if (!string.IsNullOrEmpty(commandStr))
                     {
-                        RunUriLanuchCommandAsync(commandStr, strWithoutPrefix);
+                        await RunUriLanuchCommandAsync(commandStr, strWithoutPrefix);
                         return 0;
                     }
                 }
@@ -38,6 +38,8 @@ namespace LightHub.Helper
                 case Const.loginCommand:
                     string token = await UserAccounts.GenerateToken(UserAccounts.GetTokenCodeStr(strWithoutPrefix));
                     UserAccounts.userAccountsList.Add(new User(token));
+
+                    Settings.WriteUserAccountsSetting();
                     break;
             }
         }

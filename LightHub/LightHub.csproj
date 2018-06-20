@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="Constant\Const.cs" />
     <Compile Include="Constant\Enumeration.cs" />
+    <Compile Include="Converter\UserConverter.cs" />
     <Compile Include="Helper\ActivateHandler.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -146,6 +147,7 @@
       <Version>4.3.3</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
