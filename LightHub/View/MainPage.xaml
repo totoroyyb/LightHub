@@ -1,0 +1,74 @@
+﻿<Page
+    x:Class="LightHub.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LightHub"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:fa="using:FontAwesome.UWP"
+    mc:Ignorable="d"
+    >
+
+    <Grid Name="myGrid">
+
+        <NavigationView>
+            <NavigationView.MenuItems>
+                <NavigationViewItemHeader Content="Discover"/>
+                <NavigationViewItem Content="Activity" Tag="activity">
+                    <NavigationViewItem.Icon>
+                        <fa:FontAwesome Icon="Connectdevelop"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem Content="Notification" Tag="notification">
+                    <NavigationViewItem.Icon>
+                        <fa:FontAwesome Icon="BellOutline"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem Content="Trending" Tag="trending">
+                    <NavigationViewItem.Icon>
+                        <fa:FontAwesome Icon="LineChart"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem Content="Issue" Tag="issue">
+                    <NavigationViewItem.Icon>
+                        <fa:FontAwesome Icon="Question"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItemSeparator/>
+
+                <NavigationViewItemHeader Content="Personal"/>
+                <NavigationViewItem Content="Profile" Tag="profile">
+                    <NavigationViewItem.Icon>
+                        <fa:FontAwesome Icon="UserOutline"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem Content="My Repos" Tag="myrepos">
+                    <NavigationViewItem.Icon>
+                        <fa:FontAwesome Icon="FileCodeOutline"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem Content="My Starred" Tag="mystarred">
+                    <NavigationViewItem.Icon>
+                        <fa:FontAwesome Icon="StarOutline"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem Content="Bookmarks" Tag="bookmarks">
+                    <NavigationViewItem.Icon>
+                        <fa:FontAwesome Icon="BookmarkOutline"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+
+            <NavigationView.PaneTitle>
+                <x:String>LightHub</x:String>
+            </NavigationView.PaneTitle>
+        </NavigationView>
+    </Grid>
+</Page>
