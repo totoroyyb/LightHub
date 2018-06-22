@@ -10,65 +10,93 @@
     >
 
     <Grid Name="myGrid">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/BGImage/Test.jpg"/>
+        </Grid.Background>
 
-        <NavigationView>
-            <NavigationView.MenuItems>
-                <NavigationViewItemHeader Content="Discover"/>
-                <NavigationViewItem Content="Activity" Tag="activity">
-                    <NavigationViewItem.Icon>
-                        <fa:FontAwesome Icon="Connectdevelop"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
+        <Grid>
+            <Grid.Background>
+                <AcrylicBrush TintColor="White"
+                              TintOpacity="0.6"
+                              BackgroundSource="Backdrop"
+                              FallbackColor="White"/>
+            </Grid.Background>
 
-                <NavigationViewItem Content="Notification" Tag="notification">
-                    <NavigationViewItem.Icon>
-                        <fa:FontAwesome Icon="BellOutline"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
+            <TextBlock x:Name="AppTitle"
+        xmlns:appmodel="using:Windows.ApplicationModel"
+        Text="{x:Bind appmodel:Package.Current.DisplayName}"
+        Style="{StaticResource CaptionTextBlockStyle}"
+        IsHitTestVisible="False"
+        Canvas.ZIndex="1"/>
 
-                <NavigationViewItem Content="Trending" Tag="trending">
-                    <NavigationViewItem.Icon>
-                        <fa:FontAwesome Icon="LineChart"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
+            <NavigationView Name="MainNaviView" Canvas.ZIndex="0" SelectionChanged="MainNaviView_SelectionChanged">
+                <NavigationView.MenuItems>
+                    <NavigationViewItemHeader Content="Discover"/>
+                    <NavigationViewItem Content="Activity" Tag="activity">
+                        <NavigationViewItem.Icon>
+                            <fa:FontAwesome Icon="Connectdevelop"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
 
-                <NavigationViewItem Content="Issue" Tag="issue">
-                    <NavigationViewItem.Icon>
-                        <fa:FontAwesome Icon="Question"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
+                    <NavigationViewItem Content="Notification" Tag="notification">
+                        <NavigationViewItem.Icon>
+                            <fa:FontAwesome Icon="BellOutline"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
 
-                <NavigationViewItemSeparator/>
+                    <NavigationViewItem Content="Trending" Tag="trending">
+                        <NavigationViewItem.Icon>
+                            <fa:FontAwesome Icon="LineChart"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
 
-                <NavigationViewItemHeader Content="Personal"/>
-                <NavigationViewItem Content="Profile" Tag="profile">
-                    <NavigationViewItem.Icon>
-                        <fa:FontAwesome Icon="UserOutline"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
+                    <NavigationViewItem Content="Issue" Tag="issue">
+                        <NavigationViewItem.Icon>
+                            <fa:FontAwesome Icon="Question"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
 
-                <NavigationViewItem Content="My Repos" Tag="myrepos">
-                    <NavigationViewItem.Icon>
-                        <fa:FontAwesome Icon="FileCodeOutline"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
+                    <NavigationViewItemSeparator/>
 
-                <NavigationViewItem Content="My Starred" Tag="mystarred">
-                    <NavigationViewItem.Icon>
-                        <fa:FontAwesome Icon="StarOutline"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
+                    <NavigationViewItemHeader Content="Personal"/>
+                    <NavigationViewItem Content="Profile" Tag="profile">
+                        <NavigationViewItem.Icon>
+                            <fa:FontAwesome Icon="UserOutline"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
 
-                <NavigationViewItem Content="Bookmarks" Tag="bookmarks">
-                    <NavigationViewItem.Icon>
-                        <fa:FontAwesome Icon="BookmarkOutline"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-            </NavigationView.MenuItems>
+                    <NavigationViewItem Content="My Repos" Tag="myrepos">
+                        <NavigationViewItem.Icon>
+                            <fa:FontAwesome Icon="FileCodeOutline"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
 
-            <NavigationView.PaneTitle>
-                <x:String>LightHub</x:String>
-            </NavigationView.PaneTitle>
-        </NavigationView>
+                    <NavigationViewItem Content="My Starred" Tag="mystarred">
+                        <NavigationViewItem.Icon>
+                            <fa:FontAwesome Icon="StarOutline"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
+
+                    <NavigationViewItem Content="Bookmarks" Tag="bookmarks">
+                        <NavigationViewItem.Icon>
+                            <fa:FontAwesome Icon="BookmarkOutline"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
+                </NavigationView.MenuItems>
+
+                <NavigationView.PaneTitle>
+                    <x:String>LightHub</x:String>
+                </NavigationView.PaneTitle>
+
+                <Frame Name="MainFrame">
+                    <Frame.ContentTransitions>
+                        <TransitionCollection>
+                            <NavigationThemeTransition/>
+                        </TransitionCollection>
+                    </Frame.ContentTransitions>
+                </Frame>
+            </NavigationView>
+
+        </Grid>
     </Grid>
 </Page>

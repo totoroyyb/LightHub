@@ -16,5 +16,14 @@ namespace LightHub.Constant
         public const string loginCommand = "login";
 
         public const string userAccountsSettingName = "UserAccountsData";
+
+        public const string NaviActivity = "activity";
+        public const string NaviNotif = "notification";
+        public const string NaviTrend = "trending";
+        public const string NaviIssue = "issue";
+        public const string NaviProfile = "profile";
+        public const string NaviMyRepos = "myrepos";
+        public const string NaviMyStarred = "mystarred";
+        public const string NaviBookmarks = "bookmarks";
     }
 }

@@ -11,7 +11,6 @@ namespace LightHub.Model
     public class UserAccounts
     {
         public static List<User> userAccountsList = new List<User>();
-        public static GitHubClient client = new GitHubClient(new ProductHeaderValue(Const.productHeader));
 
         public static void AddUserAccount(User user)
         {
@@ -39,7 +38,7 @@ namespace LightHub.Model
                 Scopes = { "user", "notifications" },
             };
 
-            var oauthLoginUrl = client.Oauth.GetGitHubLoginUrl(request);
+            var oauthLoginUrl = Core.client.Oauth.GetGitHubLoginUrl(request);
 
             LaunchUri(oauthLoginUrl);
         }
@@ -47,7 +46,7 @@ namespace LightHub.Model
         public async static Task<string> GenerateToken(string code)
         {
             var request = new OauthTokenRequest(Const.clientId, Const.clientSecret, code);
-            var token = await client.Oauth.CreateAccessToken(request);
+            var token = await Core.client.Oauth.CreateAccessToken(request);
             return token.AccessToken;
         }
 
@@ -55,11 +54,6 @@ namespace LightHub.Model
         {
             string codeStr = "code=";
             return fullStr.Substring(fullStr.IndexOf(codeStr) + codeStr.Length);
-        }
-
-        public static void SetClientCredential(User user)
-        {
-            client.Credentials = new Credentials(user.accessToken);
         }
     }
 }

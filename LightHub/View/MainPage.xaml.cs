@@ -1,20 +1,10 @@
-﻿using LightHub.Model;
-using Octokit;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using LightHub.Constant;
+using LightHub.Helper;
+using LightHub.Model;
+using LightHub.View.SubViews;
+using Windows.ApplicationModel.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -31,6 +21,7 @@ namespace LightHub
         public MainPage()
         {
             this.InitializeComponent();
+            TitleBarManager.InitTitleBar(AppTitle);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -43,18 +34,44 @@ namespace LightHub
             string tokenString = UserAccounts.userAccountsList[0].accessToken;
         }
 
-        private async void Button_Click_2(object sender, RoutedEventArgs e)
+        private void MainNaviView_SelectionChanged(Windows.UI.Xaml.Controls.NavigationView sender, Windows.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
         {
-            UserAccounts.SetClientCredential(UserAccounts.userAccountsList[0]);
-            var repo = await UserAccounts.client.Repository.GetAllForCurrent();
-        }
+            if (args.IsSettingsSelected)
+            {
 
-        private async void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            UserAccounts.SetClientCredential(UserAccounts.userAccountsList[0]);
-            var user = await UserAccounts.client.User.Current();
-            var test = await UserAccounts.client.Activity.Feeds.GetFeeds();
-            var test1 = await UserAccounts.client.Activity.Notifications.GetAllForCurrent();
+            }
+            else
+            {
+                NavigationViewItem item = args.SelectedItem as NavigationViewItem;
+                switch (item.Tag.ToString())
+                {
+                    case Const.NaviActivity:
+                        break;
+
+                    case Const.NaviNotif:
+                        break;
+
+                    case Const.NaviTrend:
+                        break;
+
+                    case Const.NaviIssue:
+                        break;
+
+                    case Const.NaviProfile:
+                        MainFrame.Navigate(typeof(ProfilePage));
+                        break;
+
+                    case Const.NaviMyRepos:
+                        break;
+
+                    case Const.NaviMyStarred:
+                        break;
+
+                    case Const.NaviBookmarks:
+                        break;
+                }
+
+            }
         }
     }
 }

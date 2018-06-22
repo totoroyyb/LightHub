@@ -69,6 +69,8 @@ namespace LightHub
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
+
+                TitleBarManager.extendIntoTitleBar(Resources);
             }
         }
 
