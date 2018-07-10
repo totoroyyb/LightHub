@@ -1,9 +1,6 @@
 ﻿using LightHub.Constant;
 using Octokit;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LightHub.Model
@@ -11,8 +8,9 @@ namespace LightHub.Model
     public class Core
     {
         public static GitHubClient client = new GitHubClient(new ProductHeaderValue(Const.productHeader));
-        public static Octokit.User userProfile;
-        public static IReadOnlyList<Activity> events;
+        private static Octokit.User userProfile;
+        private static IReadOnlyList<Activity> allCurrentUserPerformedEvents;
+        private static IReadOnlyList<Activity> allUserPerformedEvents;
 
         public static void SetClientCredential(User user)
         {
@@ -21,19 +19,25 @@ namespace LightHub.Model
 
         public static void SetClientCredentialPersonalToken()
         {
-            client.Credentials = new Credentials("");
+            client.Credentials = new Credentials("709c9cd736c26cf4aa2dbceb81ed15432426f3e4");
         }
 
         public async static Task<Octokit.User> GetUserProfile()
         {
-            userProfile = await Core.client.User.Current();
+            userProfile = await client.User.Current();
             return userProfile;
         }
 
-        public async static Task<IReadOnlyList<Activity>> GetEvents()
+        public async static Task<IReadOnlyList<Activity>> GetAllCurrentUserPerformedEvents()
         {
-            events = await Core.client.Activity.Events.GetAllUserReceivedPublic(userProfile.Login);
-            return events;
+            allCurrentUserPerformedEvents = await client.Activity.Events.GetAllUserPerformed(userProfile.Login);
+            return allCurrentUserPerformedEvents;
+        }
+
+        public async static Task<IReadOnlyList<Activity>> GetAllUserPerformedEvents(string userLogin)
+        {
+            allUserPerformedEvents = await client.Activity.Events.GetAllUserPerformed(userLogin);
+            return allUserPerformedEvents;
         }
     }
 }

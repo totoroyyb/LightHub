@@ -22,14 +22,14 @@
                               FallbackColor="White"/>
             </Grid.Background>
 
-            <TextBlock x:Name="AppTitle"
+            <!--<TextBlock x:Name="AppTitle"
         xmlns:appmodel="using:Windows.ApplicationModel"
         Text="{x:Bind appmodel:Package.Current.DisplayName}"
         Style="{StaticResource CaptionTextBlockStyle}"
         IsHitTestVisible="False"
-        Canvas.ZIndex="1"/>
+        Canvas.ZIndex="1"/>-->
 
-            <NavigationView Name="MainNaviView" Canvas.ZIndex="0" SelectionChanged="MainNaviView_SelectionChanged">
+            <NavigationView Name="MainNaviView" SelectionChanged="MainNaviView_SelectionChanged">
                 <NavigationView.MenuItems>
                     <NavigationViewItemHeader Content="Discover"/>
                     <NavigationViewItem Content="Activity" Tag="activity">
@@ -52,7 +52,7 @@
 
                     <NavigationViewItem Content="Issue" Tag="issue">
                         <NavigationViewItem.Icon>
-                            <fa:FontAwesome Icon="Question"/>
+                            <fa:FontAwesome Icon="QuestionCircleOutline"/>
                         </NavigationViewItem.Icon>
                     </NavigationViewItem>
 

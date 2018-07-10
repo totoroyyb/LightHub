@@ -24,20 +24,28 @@ namespace LightHub.View.SubViews
     /// </summary>
     public sealed partial class ProfilePage : Page
     {
+        private ViewModels.ProfilePageModel ViewModel { get; set; }
+
         public ProfilePage()
         {
             this.InitializeComponent();
-            Init();
-            
+            this.DataContextChanged += (s, e) =>
+            {
+                ViewModel = DataContext as ViewModels.ProfilePageModel;
+            };
         }
 
-        private async void Init()
+        //private async void Init()
+        //{
+        //    Core.SetClientCredentialPersonalToken();
+        //    var user = await Core.GetUserProfile();
+        //    ProfilePic.ProfilePicture = new BitmapImage(new Uri(user.AvatarUrl));
+        //}
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Core.SetClientCredentialPersonalToken();
-            var user = await Core.GetUserProfile();
-            ProfilePic.ProfilePicture = new BitmapImage(new Uri(user.AvatarUrl));
+            ViewModel.LoadAllUserProfile();
+            //ViewModel.LoadAllCurrentUserPerformedEvents();
         }
-
-
     }
 }

@@ -97,11 +97,16 @@
     </Compile>
     <Compile Include="Constant\Const.cs" />
     <Compile Include="Constant\Enumeration.cs" />
+    <Compile Include="Converter\String2BitmapConverter.cs" />
+    <Compile Include="Converter\String2UriConverter.cs" />
     <Compile Include="Converter\UserConverter.cs" />
+    <Compile Include="Formatter\EmailUriFormatter.cs" />
     <Compile Include="Helper\ActivateHandler.cs" />
     <Compile Include="Helper\CheckContract.cs" />
     <Compile Include="Helper\TitleBarManager.cs" />
     <Compile Include="Model\Core.cs" />
+    <Compile Include="ViewModels\ProfilePageModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -135,6 +140,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ResourceDictionary\DataTemplates\ActivityDataTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResourceDictionary\Seperator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

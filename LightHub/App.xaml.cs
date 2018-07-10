@@ -29,6 +29,7 @@ namespace LightHub
         private void LoadSettings()
         {
             Settings.ReadUserAccountsSetting();
+            Core.SetClientCredentialPersonalToken();
         }
 
         /// <summary>

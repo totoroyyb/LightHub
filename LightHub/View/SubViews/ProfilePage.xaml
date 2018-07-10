@@ -5,10 +5,93 @@
     xmlns:local="using:LightHub.View.SubViews"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
+    xmlns:vm="using:LightHub.ViewModels"
+    xmlns:cvtr="using:LightHub.Converter"
+    xmlns:fa="using:FontAwesome.UWP"
+    mc:Ignorable="d" Loaded="Page_Loaded"
     >
 
+    <Page.DataContext>
+        <vm:ProfilePageModel/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <cvtr:String2BitmapConverter x:Key="String2BitmapConverter"/>
+        <cvtr:String2UriConverter x:Key="String2UriConverter"/>
+    </Page.Resources>
+
     <Grid Background="Transparent">
-        <PersonPicture Name="ProfilePic"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal" Margin="5,0,5,0">
+                    <PersonPicture Name="ProfilePic" ProfilePicture="{x:Bind ViewModel.avatarStr, Mode=OneWay, Converter={StaticResource String2BitmapConverter}}"
+                                   Margin="5,5,5,5"
+                                   Height="140"
+                                   Width="140"/>
+
+                    <StackPanel Margin="10,0,5,0" MaxWidth="200">
+                        <TextBlock Name="FullNameBlock" Text="{x:Bind ViewModel.fullNameStr, Mode=OneWay}"
+                                   FontSize="20"
+                                   FontWeight="SemiBold"/>
+                        <TextBlock Name="LoginNameBlock" Text="{x:Bind ViewModel.loginStr, Mode=OneWay}"
+                                   FontWeight="SemiLight"
+                                   Margin="0,0,0,5"/>
+                        <TextBlock Name="BioBlock" Text="{x:Bind ViewModel.bioStr, Mode=OneWay}"
+                                   Margin="0,5,0,5"
+                                   TextWrapping="Wrap"
+                                   FontWeight="SemiLight"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <Border Style="{StaticResource VerticalSeperator}" Grid.Column="1"/>
+
+                <ScrollViewer Margin="5,0,5,0" Grid.Column="2">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                            <fa:FontAwesome Icon="Link" FontSize="16" VerticalAlignment="Center"/>
+                            <HyperlinkButton Name="SiteLink" VerticalAlignment="Center"
+                                             Content="{x:Bind ViewModel.webLinkStr, Mode=OneWay}"
+                                             NavigateUri="{x:Bind ViewModel.webLinkStr, Mode=OneWay, Converter={StaticResource String2UriConverter}}"
+                                             Margin="10,0,5,0"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                            <fa:FontAwesome Icon="EnvelopeOutline" FontSize="16" VerticalAlignment="Center"/>
+                            <HyperlinkButton Name="EmailLink" VerticalAlignment="Center"
+                                             Content="{x:Bind ViewModel.emailLinkStr, Mode=OneWay}"
+                                             NavigateUri="{x:Bind ViewModel.formattedEmailStr, Mode=OneWay, Converter={StaticResource String2UriConverter}}"
+                                             Margin="10,0,5,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Pivot>
+                    <PivotItem Header="Activity">
+                        
+                    </PivotItem>
+
+                    <PivotItem Header="Followers">
+                        
+                    </PivotItem>
+
+                    <PivotItem Header="Following">
+                        
+                    </PivotItem>
+                </Pivot>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

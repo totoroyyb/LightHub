@@ -21,7 +21,7 @@ namespace LightHub
         public MainPage()
         {
             this.InitializeComponent();
-            TitleBarManager.InitTitleBar(AppTitle);
+            //TitleBarManager.InitTitleBar(AppTitle);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
