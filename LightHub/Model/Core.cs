@@ -19,7 +19,7 @@ namespace LightHub.Model
 
         public static void SetClientCredentialPersonalToken()
         {
-            client.Credentials = new Credentials("709c9cd736c26cf4aa2dbceb81ed15432426f3e4");
+            client.Credentials = new Credentials("");
         }
 
         public async static Task<Octokit.User> GetUserProfile()
