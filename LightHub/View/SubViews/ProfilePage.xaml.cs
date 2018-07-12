@@ -24,14 +24,14 @@ namespace LightHub.View.SubViews
     /// </summary>
     public sealed partial class ProfilePage : Page
     {
-        private ViewModels.ProfilePageModel ViewModel { get; set; }
+        private ViewModels.ProfilePageViewModel ViewModel { get; set; }
 
         public ProfilePage()
         {
             this.InitializeComponent();
             this.DataContextChanged += (s, e) =>
             {
-                ViewModel = DataContext as ViewModels.ProfilePageModel;
+                ViewModel = DataContext as ViewModels.ProfilePageViewModel;
             };
         }
 

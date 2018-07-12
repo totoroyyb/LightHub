@@ -8,16 +8,27 @@
     xmlns:vm="using:LightHub.ViewModels"
     xmlns:cvtr="using:LightHub.Converter"
     xmlns:fa="using:FontAwesome.UWP"
+    xmlns:tpselector="using:LightHub.TemplatesSelector"
     mc:Ignorable="d" Loaded="Page_Loaded"
+    x:DefaultBindMode="OneWay"
     >
 
     <Page.DataContext>
-        <vm:ProfilePageModel/>
+        <vm:ProfilePageViewModel/>
     </Page.DataContext>
 
     <Page.Resources>
-        <cvtr:String2BitmapConverter x:Key="String2BitmapConverter"/>
-        <cvtr:String2UriConverter x:Key="String2UriConverter"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ResourceDictionary/DataTemplates/ActivityDataTemplate.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <cvtr:String2BitmapConverter x:Key="String2BitmapConverter"/>
+            <cvtr:String2UriConverter x:Key="String2UriConverter"/>
+            <tpselector:ActivityTemplatesSelector x:Key="ActivityTemplatesSelector"
+                                                  WatchEventTemplate="{StaticResource WatchEventTemplate}"
+                                                  PushEventTemplate="{StaticResource PushEventTemplate}"/>
+        </ResourceDictionary>
     </Page.Resources>
 
     <Grid Background="Transparent">
@@ -35,19 +46,19 @@
                 </Grid.ColumnDefinitions>
                 
                 <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal" Margin="5,0,5,0">
-                    <PersonPicture Name="ProfilePic" ProfilePicture="{x:Bind ViewModel.avatarStr, Mode=OneWay, Converter={StaticResource String2BitmapConverter}}"
+                    <PersonPicture Name="ProfilePic" ProfilePicture="{x:Bind ViewModel.avatarStr, Converter={StaticResource String2BitmapConverter}}"
                                    Margin="5,5,5,5"
                                    Height="140"
                                    Width="140"/>
 
                     <StackPanel Margin="10,0,5,0" MaxWidth="200">
-                        <TextBlock Name="FullNameBlock" Text="{x:Bind ViewModel.fullNameStr, Mode=OneWay}"
+                        <TextBlock Name="FullNameBlock" Text="{x:Bind ViewModel.fullNameStr}"
                                    FontSize="20"
                                    FontWeight="SemiBold"/>
-                        <TextBlock Name="LoginNameBlock" Text="{x:Bind ViewModel.loginStr, Mode=OneWay}"
+                        <TextBlock Name="LoginNameBlock" Text="{x:Bind ViewModel.loginStr}"
                                    FontWeight="SemiLight"
                                    Margin="0,0,0,5"/>
-                        <TextBlock Name="BioBlock" Text="{x:Bind ViewModel.bioStr, Mode=OneWay}"
+                        <TextBlock Name="BioBlock" Text="{x:Bind ViewModel.bioStr}"
                                    Margin="0,5,0,5"
                                    TextWrapping="Wrap"
                                    FontWeight="SemiLight"/>
@@ -61,16 +72,16 @@
                         <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                             <fa:FontAwesome Icon="Link" FontSize="16" VerticalAlignment="Center"/>
                             <HyperlinkButton Name="SiteLink" VerticalAlignment="Center"
-                                             Content="{x:Bind ViewModel.webLinkStr, Mode=OneWay}"
-                                             NavigateUri="{x:Bind ViewModel.webLinkStr, Mode=OneWay, Converter={StaticResource String2UriConverter}}"
+                                             Content="{x:Bind ViewModel.webLinkStr}"
+                                             NavigateUri="{x:Bind ViewModel.webLinkStr, Converter={StaticResource String2UriConverter}}"
                                              Margin="10,0,5,0"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                             <fa:FontAwesome Icon="EnvelopeOutline" FontSize="16" VerticalAlignment="Center"/>
                             <HyperlinkButton Name="EmailLink" VerticalAlignment="Center"
-                                             Content="{x:Bind ViewModel.emailLinkStr, Mode=OneWay}"
-                                             NavigateUri="{x:Bind ViewModel.formattedEmailStr, Mode=OneWay, Converter={StaticResource String2UriConverter}}"
+                                             Content="{x:Bind ViewModel.emailLinkStr}"
+                                             NavigateUri="{x:Bind ViewModel.formattedEmailStr, Converter={StaticResource String2UriConverter}}"
                                              Margin="10,0,5,0"/>
                         </StackPanel>
                     </StackPanel>
@@ -80,7 +91,19 @@
             <Grid Grid.Row="1">
                 <Pivot>
                     <PivotItem Header="Activity">
-                        
+                        <ListView ItemsSource="{x:Bind ViewModel.allCurrentUserPerformedEvents}"
+                                  ItemTemplateSelector="{StaticResource ActivityTemplatesSelector}"
+                                  SelectionMode="None"
+                                  IsItemClickEnabled="True">
+                            
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalAlignment" Value="Stretch" />
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            
+                        </ListView>
                     </PivotItem>
 
                     <PivotItem Header="Followers">

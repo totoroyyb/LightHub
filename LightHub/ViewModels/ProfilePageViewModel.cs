@@ -1,9 +1,11 @@
 ﻿using LightHub.Model;
 using LightHub.Formatter;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace LightHub.ViewModels
 {
-    public class ProfilePageModel : ViewModelBase
+    public class ProfilePageViewModel : ViewModelBase
     {
         private string _avatarStr;
         public string avatarStr
@@ -54,6 +56,13 @@ namespace LightHub.ViewModels
             set { SetProperty(ref _formattedEmailStr, value); }
         }
 
+        private ObservableCollection<Octokit.Activity> _allCurrentUserPerformedEvents = new ObservableCollection<Octokit.Activity>();
+        public ObservableCollection<Octokit.Activity> allCurrentUserPerformedEvents
+        {
+            get { return _allCurrentUserPerformedEvents; }
+            set { SetProperty(ref _allCurrentUserPerformedEvents, value); }
+        }
+
         public async void LoadAllUserProfile()
         {
             var userProfile = await Core.GetUserProfile();
@@ -64,7 +73,11 @@ namespace LightHub.ViewModels
             webLinkStr = userProfile.Blog;
             emailLinkStr = userProfile.Email;
             formattedEmailStr = EmailUriFormatter.GetFormattedEmailStr(emailLinkStr);
-            var allCurrentUserPerformedEvents = await Core.GetAllCurrentUserPerformedEvents();
+            IReadOnlyList<Octokit.Activity> allCurrentUserPerformedEventsReadOnlyList = await Core.GetAllCurrentUserPerformedEvents();
+            foreach (Octokit.Activity item in allCurrentUserPerformedEventsReadOnlyList)
+            {
+                allCurrentUserPerformedEvents.Add(item);
+            }
         }
     }
 }
