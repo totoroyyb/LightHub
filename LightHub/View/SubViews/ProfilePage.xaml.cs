@@ -35,17 +35,12 @@ namespace LightHub.View.SubViews
             };
         }
 
-        //private async void Init()
-        //{
-        //    Core.SetClientCredentialPersonalToken();
-        //    var user = await Core.GetUserProfile();
-        //    ProfilePic.ProfilePicture = new BitmapImage(new Uri(user.AvatarUrl));
-        //}
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ViewModel.LoadAllUserProfile();
-            //ViewModel.LoadAllCurrentUserPerformedEvents();
+            await ViewModel.LoadAllUserProfile();
+            ViewModel.LoadAllCurrentUserPerformedEvents();
+            ViewModel.LoadAllCurrentUserFollowers();
+            ViewModel.LoadAllCurrentUserFollowings();
         }
     }
 }

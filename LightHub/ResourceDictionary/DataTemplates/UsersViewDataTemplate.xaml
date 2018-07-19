@@ -1,0 +1,32 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LightHub.ResourceDictionary.DataTemplates"
+    xmlns:cvter="using:LightHub.Converter">
+
+    <cvter:String2BitmapConverter x:Key="String2BitmapConverter"/>
+
+    <DataTemplate x:Key="UsersViewTemplate">
+        <Grid MinHeight="125" MinWidth="125">
+            <Grid.Background>
+                <ImageBrush ImageSource="{Binding AvatarUrl, Converter={StaticResource String2BitmapConverter}}"
+                            Stretch="UniformToFill"/>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1">
+                <Grid.Background>
+                    <AcrylicBrush TintColor="White"
+                                  TintOpacity="0.3"
+                                  FallbackColor="White"
+                                  BackgroundSource="Backdrop"/>
+                </Grid.Background>
+                <TextBlock Text="{Binding Login}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+    </DataTemplate>
+    
+</ResourceDictionary>

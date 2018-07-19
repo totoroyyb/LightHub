@@ -1,0 +1,20 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LightHub.ResourceDictionary.DataTemplates"
+    xmlns:tpselector="using:LightHub.TemplatesSelector">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ResourceDictionary/DataTemplates/ActivityDataTemplate.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <tpselector:ActivityTemplatesSelector x:Key="ActivityTemplatesSelector"
+                                          WatchEventTemplate="{StaticResource WatchEventTemplate}"
+                                          PushEventTemplate="{StaticResource PushEventTemplate}"
+                                          IssuesEventTemplate="{StaticResource IssuesEventTemplate}"
+                                          IssueCommentEventTemplate="{StaticResource IssueCommentEventTemplate}"
+                                          ReleaseEventTemplate="{StaticResource ReleaseEventTemplate}"
+                                          CreateEventTemplate="{StaticResource CreateEventTemplate}"
+                                          ForkEventTemplate="{StaticResource ForkEventTemplate}"/>
+    
+</ResourceDictionary>

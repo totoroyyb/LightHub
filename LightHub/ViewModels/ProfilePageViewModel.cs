@@ -1,7 +1,10 @@
 ﻿using LightHub.Model;
 using LightHub.Formatter;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using Octokit;
+using Microsoft.Toolkit.Uwp;
+using static LightHub.Model.IncrementalLoadSource;
 
 namespace LightHub.ViewModels
 {
@@ -56,14 +59,28 @@ namespace LightHub.ViewModels
             set { SetProperty(ref _formattedEmailStr, value); }
         }
 
-        private ObservableCollection<Octokit.Activity> _allCurrentUserPerformedEvents = new ObservableCollection<Octokit.Activity>();
-        public ObservableCollection<Octokit.Activity> allCurrentUserPerformedEvents
+        private ObservableCollection<Activity> _allCurrentUserPerformedEvents = new ObservableCollection<Activity>();
+        public ObservableCollection<Activity> allCurrentUserPerformedEvents
         {
             get { return _allCurrentUserPerformedEvents; }
             set { SetProperty(ref _allCurrentUserPerformedEvents, value); }
         }
 
-        public async void LoadAllUserProfile()
+        private ObservableCollection<Octokit.User> _allCurrentUserFollowers = new ObservableCollection<Octokit.User>();
+        public ObservableCollection<Octokit.User> allCurrentUserFollowers
+        {
+            get { return _allCurrentUserFollowers; }
+            set { SetProperty(ref _allCurrentUserFollowers, value); }
+        }
+
+        private ObservableCollection<Octokit.User> _allCurrentUserFollowings = new ObservableCollection<Octokit.User>();
+        public ObservableCollection<Octokit.User> allCurrentUserFollowings
+        {
+            get { return _allCurrentUserFollowings; }
+            set { SetProperty(ref _allCurrentUserFollowings, value); }
+        }
+
+        public async Task LoadAllUserProfile()
         {
             var userProfile = await Core.GetUserProfile();
             avatarStr = userProfile.AvatarUrl;
@@ -73,11 +90,21 @@ namespace LightHub.ViewModels
             webLinkStr = userProfile.Blog;
             emailLinkStr = userProfile.Email;
             formattedEmailStr = EmailUriFormatter.GetFormattedEmailStr(emailLinkStr);
-            IReadOnlyList<Octokit.Activity> allCurrentUserPerformedEventsReadOnlyList = await Core.GetAllCurrentUserPerformedEvents();
-            foreach (Octokit.Activity item in allCurrentUserPerformedEventsReadOnlyList)
-            {
-                allCurrentUserPerformedEvents.Add(item);
-            }
+        }
+
+        public void LoadAllCurrentUserPerformedEvents()
+        {
+            allCurrentUserPerformedEvents = new IncrementalLoadingCollection<CurrentUserActivitySource, Activity>();
+        }
+
+        public void LoadAllCurrentUserFollowers()
+        {
+            allCurrentUserFollowers = new IncrementalLoadingCollection<CurrentUserFollowers, Octokit.User>();
+        }
+
+        public void LoadAllCurrentUserFollowings()
+        {
+            allCurrentUserFollowings = new IncrementalLoadingCollection<CurrentUserFollowings, Octokit.User>();
         }
     }
 }

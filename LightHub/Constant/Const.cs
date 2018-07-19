@@ -35,7 +35,26 @@ namespace LightHub.Constant
         #region Activity Type String
         public const string pushEvent = "PushEvent";
         public const string watchEvent = "WatchEvent";
+        public const string issuesEvent = "IssuesEvent";
+        public const string issueCommentEvent = "IssueCommentEvent";
+        public const string createEvent = "CreateEvent";
+        public const string releaseEvent = "ReleaseEvent";
+        public const string forkEvent = "ForkEvent";
         #endregion
 
+        #region Issues Event Type String
+        public const string assigned = "assigned";
+        public const string unassigned = "unassigned";
+        public const string labeled = "labeled";
+        public const string unlabeled = "unlabeled";
+        public const string opened = "opened";
+        public const string edited = "edited";
+        public const string milestoned = "milestoned";
+        public const string demilestoned = "demilestoned";
+        public const string closed = "closed";
+        public const string reopened = "reopened";
+        public const string created = "created";
+        public const string deleted = "deleted";
+        #endregion
     }
 }

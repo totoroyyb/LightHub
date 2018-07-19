@@ -4,7 +4,7 @@
     {
         public MyDataTemplates()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
     }
 }

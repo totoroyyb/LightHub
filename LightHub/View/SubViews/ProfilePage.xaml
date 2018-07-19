@@ -8,7 +8,6 @@
     xmlns:vm="using:LightHub.ViewModels"
     xmlns:cvtr="using:LightHub.Converter"
     xmlns:fa="using:FontAwesome.UWP"
-    xmlns:tpselector="using:LightHub.TemplatesSelector"
     mc:Ignorable="d" Loaded="Page_Loaded"
     x:DefaultBindMode="OneWay"
     >
@@ -20,14 +19,12 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/ResourceDictionary/DataTemplates/ActivityDataTemplate.xaml"/>
+                <ResourceDictionary Source="/ResourceDictionary/DataTemplates/TemplateSelector.xaml"/>
+                <ResourceDictionary Source="/ResourceDictionary/DataTemplates/UsersViewDataTemplate.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
             <cvtr:String2BitmapConverter x:Key="String2BitmapConverter"/>
             <cvtr:String2UriConverter x:Key="String2UriConverter"/>
-            <tpselector:ActivityTemplatesSelector x:Key="ActivityTemplatesSelector"
-                                                  WatchEventTemplate="{StaticResource WatchEventTemplate}"
-                                                  PushEventTemplate="{StaticResource PushEventTemplate}"/>
         </ResourceDictionary>
     </Page.Resources>
 
@@ -95,10 +92,9 @@
                                   ItemTemplateSelector="{StaticResource ActivityTemplatesSelector}"
                                   SelectionMode="None"
                                   IsItemClickEnabled="True">
-                            
+
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalAlignment" Value="Stretch" />
                                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                                 </Style>
                             </ListView.ItemContainerStyle>
@@ -107,11 +103,21 @@
                     </PivotItem>
 
                     <PivotItem Header="Followers">
-                        
+                        <GridView ItemsSource="{x:Bind ViewModel.allCurrentUserFollowers}"
+                                  ItemTemplate="{StaticResource UsersViewTemplate}"
+                                  SelectionMode="None"
+                                  IsItemClickEnabled="True">
+                            
+                        </GridView>
                     </PivotItem>
 
                     <PivotItem Header="Following">
-                        
+                        <GridView ItemsSource="{x:Bind ViewModel.allCurrentUserFollowings}"
+                                  ItemTemplate="{StaticResource UsersViewTemplate}"
+                                  SelectionMode="None"
+                                  IsItemClickEnabled="True">
+
+                        </GridView>
                     </PivotItem>
                 </Pivot>
             </Grid>
