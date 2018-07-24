@@ -7,7 +7,7 @@ namespace LightHub.Helper
 {
     public class TitleBarManager
     {
-        public static void extendIntoTitleBar(ResourceDictionary Resources)
+        public static void extendIntoTitleBar(Windows.UI.Xaml.ResourceDictionary Resources)
         {
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
             var titleBar = ApplicationView.GetForCurrentView().TitleBar;

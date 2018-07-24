@@ -41,7 +41,7 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal" Margin="5,0,5,0">
                     <PersonPicture Name="ProfilePic" ProfilePicture="{x:Bind ViewModel.avatarStr, Converter={StaticResource String2BitmapConverter}}"
                                    Margin="5,5,5,5"

@@ -10,10 +10,15 @@ namespace LightHub.Model
     {
         public static GitHubClient client = new GitHubClient(new ProductHeaderValue(Const.productHeader));
         private static Octokit.User userProfile;
+
         private static IReadOnlyList<Activity> allCurrentUserPerformedEvents;
         private static IReadOnlyList<Activity> allUserPerformedEvents;
+        private static IReadOnlyList<Activity> allCurrentUserReceivedEvents;
+
         private static IReadOnlyList<Octokit.User> allCurrentUserFollowers;
         private static IReadOnlyList<Octokit.User> allCurrentUserFollowings;
+        
+        private static Feed allFeedsForCurrent;
 
         public static void SetClientCredential(User user)
         {
@@ -22,7 +27,7 @@ namespace LightHub.Model
 
         public static void SetClientCredentialPersonalToken()
         {
-            client.Credentials = new Credentials("");
+            client.Credentials = new Credentials("8a7c56c3ad86fdd65ef3ca2a5212f84e6cc8017b");
         }
 
         public async static Task<Octokit.User> GetUserProfile()
@@ -31,15 +36,20 @@ namespace LightHub.Model
             return userProfile;
         }
 
+        public static bool isUserProfileValid()
+        {
+            return (userProfile != null) ? true : false;
+        }
+
         public async static Task<IReadOnlyList<Activity>> GetAllCurrentUserPerformedEvents(Pagination pagination = null)
         {
             if (pagination != null)
             {
-                allCurrentUserPerformedEvents = await client.Activity.Events.GetAllUserPerformed(userProfile.Login, pagination.apiOptions);
+                allCurrentUserPerformedEvents = await client.Activity.Events.GetAllUserPerformed(userProfile?.Login, pagination.apiOptions);
             }
             else
             {
-                allCurrentUserPerformedEvents = await client.Activity.Events.GetAllUserPerformed(userProfile.Login);
+                allCurrentUserPerformedEvents = await client.Activity.Events.GetAllUserPerformed(userProfile?.Login);
             }
             return allCurrentUserPerformedEvents;
         }
@@ -55,6 +65,19 @@ namespace LightHub.Model
                 allUserPerformedEvents = await client.Activity.Events.GetAllUserPerformed(userLogin);
             }
             return allUserPerformedEvents;
+        }
+
+        public async static Task<IReadOnlyList<Activity>> GetAllCurrentReceivedEvents(Pagination pagination = null)
+        {
+            if (pagination != null)
+            {
+                allCurrentUserReceivedEvents = await client.Activity.Events.GetAllUserReceived(userProfile?.Login, pagination.apiOptions);
+            }
+            else
+            {
+                allCurrentUserReceivedEvents = await client.Activity.Events.GetAllUserReceived(userProfile?.Login);
+            }
+            return allCurrentUserReceivedEvents;
         }
 
         public async static Task<IReadOnlyList<Octokit.User>> GetAllFollowersOfCurrent(Pagination pagination = null)
@@ -81,6 +104,12 @@ namespace LightHub.Model
                 allCurrentUserFollowings = await client.User.Followers.GetAllFollowingForCurrent();
             }
             return allCurrentUserFollowings;
+        }
+
+        public async static Task<Feed> GetAllFeedsOfCurrent()
+        {
+            allFeedsForCurrent = await client.Activity.Feeds.GetFeeds();
+            return allFeedsForCurrent;
         }
     }
 }

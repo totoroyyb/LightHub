@@ -9,11 +9,20 @@ namespace LightHub.Model
 {
     public class IncrementalLoadSource
     {
-        public class CurrentUserActivitySource : IIncrementalSource<Activity>
+        public class CurrentUserPerformedActivitySource : IIncrementalSource<Activity>
         {
             public async Task<IEnumerable<Activity>> GetPagedItemsAsync(int pageIndex, int pageSize, CancellationToken cancellationToken = default(CancellationToken))
             {
                 var result = await Core.GetAllCurrentUserPerformedEvents(new Pagination(pageIndex + 1, pageSize));
+                return result;
+            }
+        }
+
+        public class CurrentUserReceivedActivitySource : IIncrementalSource<Activity>
+        {
+            public async Task<IEnumerable<Activity>> GetPagedItemsAsync(int pageIndex, int pageSize, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                var result = await Core.GetAllCurrentReceivedEvents(new Pagination(pageIndex + 1, pageSize));
                 return result;
             }
         }

@@ -94,7 +94,7 @@ namespace LightHub.ViewModels
 
         public void LoadAllCurrentUserPerformedEvents()
         {
-            allCurrentUserPerformedEvents = new IncrementalLoadingCollection<CurrentUserActivitySource, Activity>();
+            allCurrentUserPerformedEvents = new IncrementalLoadingCollection<CurrentUserPerformedActivitySource, Activity>();
         }
 
         public void LoadAllCurrentUserFollowers()

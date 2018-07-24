@@ -3,7 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:fa="using:FontAwesome.UWP"
     xmlns:cvter="using:LightHub.Converter"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls">
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    x:Class="LightHub.ResourceDictionary.DataTemplates.ActivityDataTemplate">
 
     <cvter:String2BitmapConverter x:Key="String2BitmapConverter"/>
     <cvter:ShaTrimConverter x:Key="ShaTrimConverter"/>
@@ -29,8 +30,13 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,5">
-                    <PersonPicture Height="45" Width="45" Margin="0,0,5,0"
+                    <Grid>
+                        <PersonPicture Height="45" Width="45" Margin="0,0,5,0"
                         ProfilePicture="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
+                        <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                Click="Button_Click"/>
+                    </Grid>
+                    
 
                     <TextBlock Text="{Binding Actor.Login}" Margin="5,0,0,0"
                                VerticalAlignment="Center"
@@ -301,7 +307,7 @@
                         <Run>Forked</Run>
                         <Run Text="{Binding Repo.Name}" FontWeight="Bold"/>
                         <Run>to</Run>
-                        <Run Text="{Binding Payload.Forkee.FullName}"/>
+                        <Run Text="{Binding Payload.Forkee.FullName}" FontWeight="Bold"/>
                     </Paragraph>
                 </RichTextBlock>
 

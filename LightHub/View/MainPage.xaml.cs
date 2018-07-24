@@ -44,6 +44,7 @@ namespace LightHub
                 switch (item.Tag.ToString())
                 {
                     case Const.NaviActivity:
+                        MainFrame.Navigate(typeof(NewsPage));
                         break;
 
                     case Const.NaviNotif:
