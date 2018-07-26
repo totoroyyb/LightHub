@@ -11,14 +11,11 @@ namespace LightHub.Converter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if (value is string)
+            if (value is string && !string.IsNullOrEmpty((string)value))
             {
                 return new Uri((string)value);
             }
-            else
-            {
-                return null;
-            }
+            return null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

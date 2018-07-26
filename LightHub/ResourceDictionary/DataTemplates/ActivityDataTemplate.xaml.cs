@@ -12,12 +12,7 @@ namespace LightHub.ResourceDictionary.DataTemplates
     {
         public ActivityDataTemplate()
         {
-            InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            //InitializeComponent();
         }
     }
 }

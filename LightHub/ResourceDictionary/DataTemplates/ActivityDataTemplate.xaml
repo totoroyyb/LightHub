@@ -3,8 +3,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:fa="using:FontAwesome.UWP"
     xmlns:cvter="using:LightHub.Converter"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-    x:Class="LightHub.ResourceDictionary.DataTemplates.ActivityDataTemplate">
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ResourceDictionary/UserAvatar.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
 
     <cvter:String2BitmapConverter x:Key="String2BitmapConverter"/>
     <cvter:ShaTrimConverter x:Key="ShaTrimConverter"/>
@@ -12,6 +15,7 @@
     <cvter:FirstCharUpCaseConverter x:Key="FirstCharUpCaseConverter"/>
     <cvter:String2UriConverter x:Key="String2UriConverter"/>
     <cvter:VisibilityConverter x:Key="VisibilityConverter"/>
+    <cvter:CurrentUser2VisibilityConverter x:Key="CurrentUser2VisibilityConverter"/>
 
     <DataTemplate x:Key="PushEventTemplate">
         <Grid Margin="5,12,5,12">
@@ -31,14 +35,16 @@
 
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,5">
                     <Grid>
-                        <PersonPicture Height="45" Width="45" Margin="0,0,5,0"
-                        ProfilePicture="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
-                        <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                                Click="Button_Click"/>
+                        <controls:ImageEx Style="{StaticResource SmallCornerRounded}"
+                                          Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
+                        <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
+                            <Button Style="{StaticResource SmallCornerRoundedLayer}"
+                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=PersonalActivityListView}"
+                                    CommandParameter="{Binding}"/>
+                        </Border>
                     </Grid>
                     
-
-                    <TextBlock Text="{Binding Actor.Login}" Margin="5,0,0,0"
+                    <TextBlock Text="{Binding Actor.Login}" Margin="10,0,0,0"
                                VerticalAlignment="Center"
                                FontSize="16"/>
                 </StackPanel>
@@ -93,10 +99,17 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,5">
-                    <PersonPicture Height="45" Width="45" Margin="0,0,5,0"
-                        ProfilePicture="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
+                    <Grid>
+                        <controls:ImageEx Style="{StaticResource SmallCornerRounded}"
+                                          Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
+                        <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
+                            <Button Style="{StaticResource SmallCornerRoundedLayer}"
+                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=PersonalActivityListView}"
+                                    CommandParameter="{Binding}"/>
+                        </Border>
+                    </Grid>
 
-                    <TextBlock Text="{Binding Actor.Login}" Margin="5,0,0,0"
+                    <TextBlock Text="{Binding Actor.Login}" Margin="10,0,0,0"
                                VerticalAlignment="Center"
                                FontSize="16"/>
                 </StackPanel>
@@ -130,10 +143,17 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,5">
-                    <PersonPicture Height="45" Width="45" Margin="0,0,5,0"
-                        ProfilePicture="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
+                    <Grid>
+                        <controls:ImageEx Style="{StaticResource SmallCornerRounded}"
+                                          Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
+                        <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
+                            <Button Style="{StaticResource SmallCornerRoundedLayer}"
+                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=PersonalActivityListView}"
+                                    CommandParameter="{Binding}"/>
+                        </Border>
+                    </Grid>
 
-                    <TextBlock Text="{Binding Actor.Login}" Margin="5,0,0,0"
+                    <TextBlock Text="{Binding Actor.Login}" Margin="10,0,0,0"
                                VerticalAlignment="Center"
                                FontSize="16"/>
                 </StackPanel>
@@ -173,10 +193,17 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,5">
-                    <PersonPicture Height="45" Width="45" Margin="0,0,5,0"
-                        ProfilePicture="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
+                    <Grid>
+                        <controls:ImageEx Style="{StaticResource SmallCornerRounded}"
+                                          Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
+                        <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
+                            <Button Style="{StaticResource SmallCornerRoundedLayer}"
+                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=PersonalActivityListView}"
+                                    CommandParameter="{Binding}"/>
+                        </Border>
+                    </Grid>
 
-                    <TextBlock Text="{Binding Actor.Login}" Margin="5,0,0,0"
+                    <TextBlock Text="{Binding Actor.Login}" Margin="10,0,0,0"
                                VerticalAlignment="Center"
                                FontSize="16"/>
                 </StackPanel>
@@ -217,10 +244,17 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,5">
-                    <PersonPicture Height="45" Width="45" Margin="0,0,5,0"
-                        ProfilePicture="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
+                    <Grid>
+                        <controls:ImageEx Style="{StaticResource SmallCornerRounded}"
+                                          Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
+                        <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
+                            <Button Style="{StaticResource SmallCornerRoundedLayer}"
+                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=PersonalActivityListView}"
+                                    CommandParameter="{Binding}"/>
+                        </Border>
+                    </Grid>
 
-                    <TextBlock Text="{Binding Actor.Login}" Margin="5,0,0,0"
+                    <TextBlock Text="{Binding Actor.Login}" Margin="10,0,0,0"
                                VerticalAlignment="Center"
                                FontSize="16"/>
                 </StackPanel>
@@ -253,10 +287,17 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,5">
-                    <PersonPicture Height="45" Width="45" Margin="0,0,5,0"
-                        ProfilePicture="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
+                    <Grid>
+                        <controls:ImageEx Style="{StaticResource SmallCornerRounded}"
+                                          Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
+                        <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
+                            <Button Style="{StaticResource SmallCornerRoundedLayer}"
+                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=PersonalActivityListView}"
+                                    CommandParameter="{Binding}"/>
+                        </Border>
+                    </Grid>
 
-                    <TextBlock Text="{Binding Actor.Login}" Margin="5,0,0,0"
+                    <TextBlock Text="{Binding Actor.Login}" Margin="10,0,0,0"
                                VerticalAlignment="Center"
                                FontSize="16"/>
                 </StackPanel>
@@ -290,10 +331,17 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,5">
-                    <PersonPicture Height="45" Width="45" Margin="0,0,5,0"
-                        ProfilePicture="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
+                    <Grid>
+                        <controls:ImageEx Style="{StaticResource SmallCornerRounded}"
+                                          Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
+                        <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
+                            <Button Style="{StaticResource SmallCornerRoundedLayer}"
+                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=PersonalActivityListView}"
+                                    CommandParameter="{Binding}"/>
+                        </Border>
+                    </Grid>
 
-                    <TextBlock Text="{Binding Actor.Login}" Margin="5,0,0,0"
+                    <TextBlock Text="{Binding Actor.Login}" Margin="10,0,0,0"
                                VerticalAlignment="Center"
                                FontSize="16"/>
                 </StackPanel>

@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="Constant\Const.cs" />
     <Compile Include="Constant\Enumeration.cs" />
+    <Compile Include="Converter\CurrentUser2VisibilityConverter.cs" />
     <Compile Include="Converter\FirstCharUpCaseConverter.cs" />
     <Compile Include="Converter\Int2StringConverter.cs" />
     <Compile Include="Converter\ShaTrimConverter.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Converter\UserConverter.cs" />
     <Compile Include="Converter\VisibilityConverter.cs" />
     <Compile Include="Helper\Pagination.cs" />
+    <Compile Include="Model\Commands.cs" />
     <Compile Include="Model\IncrementalLoadSource.cs" />
     <Compile Include="ResourceDictionary\DataTemplates\ActivityDataTemplate.xaml.cs">
       <DependentUpon>ActivityDataTemplate.xaml</DependentUpon>
@@ -170,6 +172,10 @@
     <Page Include="ResourceDictionary\Seperator.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ResourceDictionary\UserAvatar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -1,0 +1,21 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:local="using:LightHub.ResourceDictionary">
+
+    <Style x:Key="SmallCornerRounded" TargetType="controls:ImageEx">
+        <Setter Property="Height" Value="45"/>
+        <Setter Property="Width" Value="45"/>
+        <Setter Property="CornerRadius" Value="5"/>
+    </Style>
+
+    <Style x:Key="SmallCornerRoundedLayer" TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}">
+        <Setter Property="Height" Value="45"/>
+        <Setter Property="Width" Value="45"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+</ResourceDictionary>

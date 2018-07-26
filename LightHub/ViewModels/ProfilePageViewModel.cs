@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Octokit;
 using Microsoft.Toolkit.Uwp;
 using static LightHub.Model.IncrementalLoadSource;
+using System.Windows.Input;
 
 namespace LightHub.ViewModels
 {
@@ -78,6 +79,13 @@ namespace LightHub.ViewModels
         {
             get { return _allCurrentUserFollowings; }
             set { SetProperty(ref _allCurrentUserFollowings, value); }
+        }
+
+        public ICommand toUserDetailCommand { get; set; }
+
+        public ProfilePageViewModel()
+        {
+            toUserDetailCommand = new NaviToUserDetail();
         }
 
         public async Task LoadAllUserProfile()
