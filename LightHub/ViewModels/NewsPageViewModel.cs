@@ -4,6 +4,7 @@ using Octokit;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using static LightHub.Model.IncrementalLoadSource;
 
 namespace LightHub.ViewModels
@@ -15,6 +16,13 @@ namespace LightHub.ViewModels
         {
             get { return _allCurrentUserReceivedEvents; }
             set { SetProperty(ref _allCurrentUserReceivedEvents, value); }
+        }
+
+        public ICommand toUserDetailCommand { get; set; }
+
+        public NewsPageViewModel()
+        {
+            toUserDetailCommand = new NaviToUserDetail();
         }
 
         public void LoadAllCurrentUserReceivedEvents()

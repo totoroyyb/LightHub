@@ -1,4 +1,5 @@
 ﻿using LightHub.Model;
+using LightHub.View.OtherViews;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -36,11 +37,32 @@ namespace LightHub.View.SubViews
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            RegisterHandler();
             if (!Core.isUserProfileValid())
             {
                 await Core.GetUserProfile();
             }
             ViewModel.LoadAllCurrentUserReceivedEvents();
         } 
+
+        private void RegisterHandler()
+        {
+            NaviToUserDetail.OnNaviToUserDetailReady += NaviToUserDetail_OnNaviToUserDetailReady;
+        }
+
+        private void DeregisterHandler()
+        {
+            NaviToUserDetail.OnNaviToUserDetailReady -= NaviToUserDetail_OnNaviToUserDetailReady;
+        }
+
+        private void NaviToUserDetail_OnNaviToUserDetailReady(object sender, EventArgs e)
+        {
+            Frame.Navigate(typeof(UserProfilePage), sender);
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            DeregisterHandler();
+        }
     }
 }

@@ -8,7 +8,7 @@
     xmlns:vm="using:LightHub.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    Loaded="Page_Loaded"
+    Loaded="Page_Loaded" Unloaded="Page_Unloaded"
     x:DefaultBindMode="OneWay">
 
     <Page.DataContext>
@@ -25,9 +25,10 @@
 
     <Grid>
         <ListView ItemsSource="{x:Bind ViewModel.allCurrentUserReceivedEvents}"
-                                  ItemTemplateSelector="{StaticResource ActivityTemplatesSelector}"
-                                  SelectionMode="None"
-                                  IsItemClickEnabled="True">
+                  ItemTemplateSelector="{StaticResource ActivityTemplatesSelector}"
+                  SelectionMode="None"
+                  IsItemClickEnabled="True"
+                  Name="ActivityListView">
 
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">

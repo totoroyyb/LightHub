@@ -39,7 +39,7 @@
                                           Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
                         <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
                             <Button Style="{StaticResource SmallCornerRoundedLayer}"
-                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=PersonalActivityListView}"
+                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=ActivityListView}"
                                     CommandParameter="{Binding}"/>
                         </Border>
                     </Grid>
@@ -104,7 +104,7 @@
                                           Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
                         <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
                             <Button Style="{StaticResource SmallCornerRoundedLayer}"
-                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=PersonalActivityListView}"
+                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=ActivityListView}"
                                     CommandParameter="{Binding}"/>
                         </Border>
                     </Grid>
@@ -148,7 +148,7 @@
                                           Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
                         <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
                             <Button Style="{StaticResource SmallCornerRoundedLayer}"
-                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=PersonalActivityListView}"
+                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=ActivityListView}"
                                     CommandParameter="{Binding}"/>
                         </Border>
                     </Grid>
@@ -198,7 +198,7 @@
                                           Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
                         <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
                             <Button Style="{StaticResource SmallCornerRoundedLayer}"
-                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=PersonalActivityListView}"
+                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=ActivityListView}"
                                     CommandParameter="{Binding}"/>
                         </Border>
                     </Grid>
@@ -249,7 +249,7 @@
                                           Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
                         <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
                             <Button Style="{StaticResource SmallCornerRoundedLayer}"
-                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=PersonalActivityListView}"
+                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=ActivityListView}"
                                     CommandParameter="{Binding}"/>
                         </Border>
                     </Grid>
@@ -292,7 +292,7 @@
                                           Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
                         <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
                             <Button Style="{StaticResource SmallCornerRoundedLayer}"
-                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=PersonalActivityListView}"
+                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=ActivityListView}"
                                     CommandParameter="{Binding}"/>
                         </Border>
                     </Grid>
@@ -336,7 +336,7 @@
                                           Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
                         <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
                             <Button Style="{StaticResource SmallCornerRoundedLayer}"
-                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=PersonalActivityListView}"
+                                    Command="{Binding DataContext.toUserDetailCommand, ElementName=ActivityListView}"
                                     CommandParameter="{Binding}"/>
                         </Border>
                     </Grid>

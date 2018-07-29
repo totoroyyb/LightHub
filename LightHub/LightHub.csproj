@@ -119,6 +119,7 @@
     <Compile Include="Model\Core.cs" />
     <Compile Include="ViewModels\NewsPageViewModel.cs" />
     <Compile Include="ViewModels\ProfilePageViewModel.cs" />
+    <Compile Include="ViewModels\UserProfilePageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -127,6 +128,9 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserAccounts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\OtherViews\UserProfilePage.xaml.cs">
+      <DependentUpon>UserProfilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SubViews\NewsPage.xaml.cs">
       <DependentUpon>NewsPage.xaml</DependentUpon>
     </Compile>
@@ -180,6 +184,10 @@
     <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\OtherViews\UserProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SubViews\NewsPage.xaml">
       <SubType>Designer</SubType>

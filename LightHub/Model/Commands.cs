@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Octokit;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace LightHub.Model
     public class NaviToUserDetail : ICommand
     {
         public event EventHandler CanExecuteChanged;
+        public static event EventHandler OnNaviToUserDetailReady;
 
         public bool CanExecute(object parameter)
         {
@@ -18,8 +20,8 @@ namespace LightHub.Model
 
         public void Execute(object parameter)
         {
-            //throw new NotImplementedException();
-
+            Activity activity = parameter as Activity;
+            OnNaviToUserDetailReady(activity.Actor, null);
         }
     }
 }
