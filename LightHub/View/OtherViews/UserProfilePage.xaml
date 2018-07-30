@@ -10,6 +10,8 @@
     xmlns:fa="using:FontAwesome.UWP"
     xmlns:vm="using:LightHub.ViewModels"
     mc:Ignorable="d"
+    Loaded="Page_Loaded"
+    x:DefaultBindMode="OneWay"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
@@ -88,7 +90,7 @@
             <Grid Grid.Row="1">
                 <Pivot>
                     <PivotItem Header="Activity">
-                        <ListView ItemsSource="{x:Bind ViewModel.allCurrentUserPerformedEvents}"
+                        <ListView ItemsSource="{x:Bind ViewModel.allUserPerformedEvents}"
                                   ItemTemplateSelector="{StaticResource ActivityTemplatesSelector}"
                                   SelectionMode="None"
                                   IsItemClickEnabled="True"
@@ -103,8 +105,16 @@
                         </ListView>
                     </PivotItem>
 
+                    <PivotItem Header="Repositories">
+
+                    </PivotItem>
+
+                    <PivotItem Header="Stars">
+
+                    </PivotItem>
+
                     <PivotItem Header="Followers">
-                        <GridView ItemsSource="{x:Bind ViewModel.allCurrentUserFollowers}"
+                        <GridView ItemsSource="{x:Bind ViewModel.allUserFollowers}"
                                   ItemTemplate="{StaticResource UsersViewTemplate}"
                                   SelectionMode="None"
                                   IsItemClickEnabled="True">
@@ -113,7 +123,7 @@
                     </PivotItem>
 
                     <PivotItem Header="Following">
-                        <GridView ItemsSource="{x:Bind ViewModel.allCurrentUserFollowings}"
+                        <GridView ItemsSource="{x:Bind ViewModel.allUserFollowings}"
                                   ItemTemplate="{StaticResource UsersViewTemplate}"
                                   SelectionMode="None"
                                   IsItemClickEnabled="True">

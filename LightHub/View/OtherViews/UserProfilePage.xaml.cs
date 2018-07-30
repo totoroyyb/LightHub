@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Octokit;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,9 +21,10 @@ namespace LightHub.View.OtherViews
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class UserProfilePage : Page
+    public sealed partial class UserProfilePage : Windows.UI.Xaml.Controls.Page
     {
         private ViewModels.UserProfilePageViewModel ViewModel { get; set; }
+        private Octokit.User user { get; set; }
 
         public UserProfilePage()
         {
@@ -31,6 +33,22 @@ namespace LightHub.View.OtherViews
             {
                 ViewModel = DataContext as ViewModels.UserProfilePageViewModel;
             };
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            Octokit.User user = e.Parameter as Octokit.User;
+            this.user = user;
+            
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (user != null)
+            {
+                ViewModel.LoadUserProfile(user);
+            }
         }
     }
 }

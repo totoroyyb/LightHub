@@ -44,5 +44,21 @@ namespace LightHub.Model
                 return result;
             }
         }
+
+        public class UserPerformedActivitySource : IIncrementalSource<Activity>
+        {
+            private string login { get; set; }
+
+            public UserPerformedActivitySource(string login)
+            {
+                this.login = login;
+            }
+
+            public async Task<IEnumerable<Activity>> GetPagedItemsAsync(int pageIndex, int pageSize, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                var result = await Core.GetAllCurrentUserPerformedEvents(new Pagination(pageIndex + 1, pageSize));
+                return result;
+            }
+        }
     }
 }
