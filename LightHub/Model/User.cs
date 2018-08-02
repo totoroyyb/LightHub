@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static LightHub.Constant.Enumeration;
-using Newtonsoft.Json;
+﻿using static LightHub.Constant.Enumeration;
 
 namespace LightHub.Model
 {
-    
+
     public class User
     {
         public AuthenType authenType { get; set; }

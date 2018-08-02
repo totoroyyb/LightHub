@@ -3,8 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:fa="using:FontAwesome.UWP"
     xmlns:cvter="using:LightHub.Converter"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-    xmlns:model="using:LightHub.ViewModels">
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/ResourceDictionary/UserAvatar.xaml"/>

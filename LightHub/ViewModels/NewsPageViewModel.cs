@@ -1,9 +1,7 @@
 ﻿using LightHub.Model;
 using Microsoft.Toolkit.Uwp;
 using Octokit;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using static LightHub.Model.IncrementalLoadSource;
 
