@@ -7,7 +7,7 @@
     <cvter:String2BitmapConverter x:Key="String2BitmapConverter"/>
 
     <DataTemplate x:Key="UsersViewTemplate">
-        <Grid MinHeight="125" MinWidth="125">
+        <Grid Height="125" Width="125">
             <Grid.Background>
                 <ImageBrush ImageSource="{Binding AvatarUrl, Converter={StaticResource String2BitmapConverter}}"
                             Stretch="UniformToFill"/>
@@ -24,7 +24,9 @@
                                   FallbackColor="White"
                                   BackgroundSource="Backdrop"/>
                 </Grid.Background>
-                <TextBlock Text="{Binding Login}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Login}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           TextWrapping="Wrap"/>
             </Grid>
         </Grid>
     </DataTemplate>

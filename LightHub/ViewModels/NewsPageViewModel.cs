@@ -11,6 +11,13 @@ namespace LightHub.ViewModels
 {
     public class NewsPageViewModel : ViewModelBase
     {
+        private Octokit.User _userProfile;
+        public Octokit.User userProfile
+        {
+            get { return _userProfile; }
+            set { SetProperty(ref _userProfile, value); }
+        }
+
         private ObservableCollection<Activity> _allCurrentUserReceivedEvents;
         public ObservableCollection<Activity> allCurrentUserReceivedEvents
         {

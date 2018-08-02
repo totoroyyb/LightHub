@@ -97,7 +97,7 @@
     </Compile>
     <Compile Include="Constant\Const.cs" />
     <Compile Include="Constant\Enumeration.cs" />
-    <Compile Include="Converter\CurrentUser2VisibilityConverter.cs" />
+    <Compile Include="Converter\UserLayer2VisibilityConverter.cs" />
     <Compile Include="Converter\FirstCharUpCaseConverter.cs" />
     <Compile Include="Converter\Int2StringConverter.cs" />
     <Compile Include="Converter\ShaTrimConverter.cs" />

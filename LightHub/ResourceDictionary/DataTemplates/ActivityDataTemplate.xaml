@@ -3,7 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:fa="using:FontAwesome.UWP"
     xmlns:cvter="using:LightHub.Converter"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls">
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:model="using:LightHub.ViewModels">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/ResourceDictionary/UserAvatar.xaml"/>
@@ -15,7 +16,8 @@
     <cvter:FirstCharUpCaseConverter x:Key="FirstCharUpCaseConverter"/>
     <cvter:String2UriConverter x:Key="String2UriConverter"/>
     <cvter:VisibilityConverter x:Key="VisibilityConverter"/>
-    <cvter:CurrentUser2VisibilityConverter x:Key="CurrentUser2VisibilityConverter"/>
+    <cvter:UserLayer2VisibilityConverter x:Key="UserLayer2VisibilityConverter"
+                                         hostLogin="{Binding userProfile.Login}"/>
 
     <DataTemplate x:Key="PushEventTemplate">
         <Grid Margin="5,12,5,12">
@@ -37,7 +39,8 @@
                     <Grid>
                         <controls:ImageEx Style="{StaticResource SmallCornerRounded}"
                                           Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
-                        <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
+                        <Border CornerRadius="5"
+                                Visibility="{Binding Actor.Login, Converter={StaticResource UserLayer2VisibilityConverter}}">
                             <Button Style="{StaticResource SmallCornerRoundedLayer}"
                                     Command="{Binding DataContext.toUserDetailCommand, ElementName=ActivityListView}"
                                     CommandParameter="{Binding}"/>
@@ -102,7 +105,9 @@
                     <Grid>
                         <controls:ImageEx Style="{StaticResource SmallCornerRounded}"
                                           Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
-                        <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
+                        <Border CornerRadius="5"
+                                Visibility="{Binding Actor.Login, Converter={StaticResource UserLayer2VisibilityConverter}, 
+                                            ConverterParameter={Binding DataContext.userProfile.Login, ElementName=ActivityListView}}">
                             <Button Style="{StaticResource SmallCornerRoundedLayer}"
                                     Command="{Binding DataContext.toUserDetailCommand, ElementName=ActivityListView}"
                                     CommandParameter="{Binding}"/>
@@ -146,7 +151,9 @@
                     <Grid>
                         <controls:ImageEx Style="{StaticResource SmallCornerRounded}"
                                           Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
-                        <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
+                        <Border CornerRadius="5"
+                                Visibility="{Binding Actor.Login, Converter={StaticResource UserLayer2VisibilityConverter}, 
+                                            ConverterParameter={Binding DataContext.userProfile.Login, ElementName=ActivityListView}}">
                             <Button Style="{StaticResource SmallCornerRoundedLayer}"
                                     Command="{Binding DataContext.toUserDetailCommand, ElementName=ActivityListView}"
                                     CommandParameter="{Binding}"/>
@@ -196,7 +203,9 @@
                     <Grid>
                         <controls:ImageEx Style="{StaticResource SmallCornerRounded}"
                                           Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
-                        <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
+                        <Border CornerRadius="5"
+                                Visibility="{Binding Actor.Login, Converter={StaticResource UserLayer2VisibilityConverter}, 
+                                            ConverterParameter={Binding DataContext.userProfile.Login, ElementName=ActivityListView}}">
                             <Button Style="{StaticResource SmallCornerRoundedLayer}"
                                     Command="{Binding DataContext.toUserDetailCommand, ElementName=ActivityListView}"
                                     CommandParameter="{Binding}"/>
@@ -247,7 +256,9 @@
                     <Grid>
                         <controls:ImageEx Style="{StaticResource SmallCornerRounded}"
                                           Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
-                        <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
+                        <Border CornerRadius="5"
+                                Visibility="{Binding Actor.Login, Converter={StaticResource UserLayer2VisibilityConverter}, 
+                                            ConverterParameter={Binding DataContext.userProfile.Login, ElementName=ActivityListView}}">
                             <Button Style="{StaticResource SmallCornerRoundedLayer}"
                                     Command="{Binding DataContext.toUserDetailCommand, ElementName=ActivityListView}"
                                     CommandParameter="{Binding}"/>
@@ -290,7 +301,9 @@
                     <Grid>
                         <controls:ImageEx Style="{StaticResource SmallCornerRounded}"
                                           Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
-                        <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
+                        <Border CornerRadius="5"
+                                Visibility="{Binding Actor.Login, Converter={StaticResource UserLayer2VisibilityConverter}, 
+                                            ConverterParameter={Binding DataContext.userProfile.Login, ElementName=ActivityListView}}">
                             <Button Style="{StaticResource SmallCornerRoundedLayer}"
                                     Command="{Binding DataContext.toUserDetailCommand, ElementName=ActivityListView}"
                                     CommandParameter="{Binding}"/>
@@ -334,7 +347,9 @@
                     <Grid>
                         <controls:ImageEx Style="{StaticResource SmallCornerRounded}"
                                           Source="{Binding Actor.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"/>
-                        <Border CornerRadius="5" Visibility="{Binding Actor.Login, Converter={StaticResource CurrentUser2VisibilityConverter}}">
+                        <Border CornerRadius="5"
+                                Visibility="{Binding Actor.Login, Converter={StaticResource UserLayer2VisibilityConverter}, 
+                                            ConverterParameter={Binding DataContext.userProfile.Login, ElementName=ActivityListView}}">
                             <Button Style="{StaticResource SmallCornerRoundedLayer}"
                                     Command="{Binding DataContext.toUserDetailCommand, ElementName=ActivityListView}"
                                     CommandParameter="{Binding}"/>

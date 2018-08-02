@@ -44,18 +44,18 @@
 
                 <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal" Margin="5,0,5,0">
                     <controls:ImageEx Name="ProfilePic"
-                                      Source="{x:Bind ViewModel.avatarStr, Converter={StaticResource String2BitmapConverter}}"
+                                      Source="{x:Bind ViewModel.userProfile.AvatarUrl, Converter={StaticResource String2BitmapConverter}}"
                                       Style="{StaticResource LargeCornerRounded}"
                                       Margin="10,5,5,5"/>
 
                     <StackPanel Margin="10,0,5,0" MaxWidth="200">
-                        <TextBlock Name="FullNameBlock" Text="{x:Bind ViewModel.fullNameStr}"
+                        <TextBlock Name="FullNameBlock" Text="{x:Bind ViewModel.userProfile.Name}"
                                    FontSize="20"
                                    FontWeight="SemiBold"/>
-                        <TextBlock Name="LoginNameBlock" Text="{x:Bind ViewModel.loginStr}"
+                        <TextBlock Name="LoginNameBlock" Text="{x:Bind ViewModel.userProfile.Login}"
                                    FontWeight="SemiLight"
                                    Margin="0,0,0,5"/>
-                        <TextBlock Name="BioBlock" Text="{x:Bind ViewModel.bioStr}"
+                        <TextBlock Name="BioBlock" Text="{x:Bind ViewModel.userProfile.Bio}"
                                    Margin="0,5,0,5"
                                    TextWrapping="Wrap"
                                    FontWeight="SemiLight"/>
@@ -69,15 +69,15 @@
                         <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                             <fa:FontAwesome Icon="Link" FontSize="16" VerticalAlignment="Center"/>
                             <HyperlinkButton Name="SiteLink" VerticalAlignment="Center"
-                                             Content="{x:Bind ViewModel.webLinkStr}"
-                                             NavigateUri="{x:Bind ViewModel.webLinkStr, Converter={StaticResource String2UriConverter}}"
+                                             Content="{x:Bind ViewModel.userProfile.Blog}"
+                                             NavigateUri="{x:Bind ViewModel.userProfile.Blog, Converter={StaticResource String2UriConverter}}"
                                              Margin="10,0,5,0"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                             <fa:FontAwesome Icon="EnvelopeOutline" FontSize="16" VerticalAlignment="Center"/>
                             <HyperlinkButton Name="EmailLink" VerticalAlignment="Center"
-                                             Content="{x:Bind ViewModel.emailLinkStr}"
+                                             Content="{x:Bind ViewModel.userProfile.Email}"
                                              NavigateUri="{x:Bind ViewModel.formattedEmailStr, Converter={StaticResource String2UriConverter}}"
                                              Margin="10,0,5,0"/>
                         </StackPanel>

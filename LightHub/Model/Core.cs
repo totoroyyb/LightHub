@@ -27,7 +27,7 @@ namespace LightHub.Model
 
         public static void SetClientCredentialPersonalToken()
         {
-            client.Credentials = new Credentials("");
+            client.Credentials = new Credentials("9110502cb78dbcaf00ae60d8982f9af858bc8589");
         }
 
         public async static Task<Octokit.User> GetUserProfile(string login = null)
@@ -106,6 +106,15 @@ namespace LightHub.Model
             return allCurrentUserFollowers;
         }
 
+        public async static Task<IReadOnlyList<Octokit.User>> GetAllFollowers(string login, Pagination pagination = null)
+        {
+            if (pagination != null)
+            {
+                return await client.User.Followers.GetAll(login, pagination.apiOptions);
+            }
+            return await client.User.Followers.GetAll(login);
+        }
+
         public async static Task<IReadOnlyList<Octokit.User>> GetAllFollowingsOfCurrent(Pagination pagination = null)
         {
             if (pagination != null)
@@ -117,6 +126,15 @@ namespace LightHub.Model
                 allCurrentUserFollowings = await client.User.Followers.GetAllFollowingForCurrent();
             }
             return allCurrentUserFollowings;
+        }
+
+        public async static Task<IReadOnlyList<Octokit.User>> GetAllFollowings(string login, Pagination pagination = null)
+        {
+            if (pagination != null)
+            {
+                return await client.User.Followers.GetAllFollowing(login, pagination.apiOptions);
+            }
+            return await client.User.Followers.GetAllFollowing(login);
         }
 
         public async static Task<Feed> GetAllFeedsOfCurrent()

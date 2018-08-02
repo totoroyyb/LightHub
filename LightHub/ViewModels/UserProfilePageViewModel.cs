@@ -2,11 +2,7 @@
 using LightHub.Model;
 using Microsoft.Toolkit.Uwp;
 using Octokit;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using static LightHub.Model.IncrementalLoadSource;
 
@@ -14,46 +10,11 @@ namespace LightHub.ViewModels
 {
     public class UserProfilePageViewModel : ViewModelBase
     {
-        private string _avatarStr;
-        public string avatarStr
+        private Octokit.User _userProfile;
+        public Octokit.User userProfile
         {
-            get { return _avatarStr; }
-            set { SetProperty(ref _avatarStr, value); }
-        }
-
-        private string _fullNameStr;
-        public string fullNameStr
-        {
-            get { return _fullNameStr; }
-            set { SetProperty(ref _fullNameStr, value); }
-        }
-
-        private string _loginStr;
-        public string loginStr
-        {
-            get { return _loginStr; }
-            set { SetProperty(ref _loginStr, value); }
-        }
-
-        private string _bioStr;
-        public string bioStr
-        {
-            get { return _bioStr; }
-            set { SetProperty(ref _bioStr, value); }
-        }
-
-        private string _webLinkStr;
-        public string webLinkStr
-        {
-            get { return _webLinkStr; }
-            set { SetProperty(ref _webLinkStr, value); }
-        }
-
-        private string _emailLinkStr;
-        public string emailLinkStr
-        {
-            get { return _emailLinkStr; }
-            set { SetProperty(ref _emailLinkStr, value); }
+            get { return _userProfile; }
+            set { SetProperty(ref _userProfile, value); }
         }
 
         private string _formattedEmailStr;
@@ -84,25 +45,35 @@ namespace LightHub.ViewModels
             set { SetProperty(ref _allUserFollowings, value); }
         }
 
-        public async void LoadUserProfile(Octokit.User user = null)
+        public async Task LoadUserProfile(Octokit.User user = null)
         {
             if (user != null)
             {
-                avatarStr = user.AvatarUrl;
-                loginStr = user.Login;
-                Octokit.User userProfile = await Core.GetUserProfile(user.Login);
-                fullNameStr = userProfile.Name;
-                bioStr = userProfile.Bio;
-                webLinkStr = userProfile.Blog;
-                emailLinkStr = userProfile.Email;
-                formattedEmailStr = EmailUriFormatter.GetFormattedEmailStr(emailLinkStr);
-                allUserPerformedEvents = new IncrementalLoadingCollection<UserPerformedActivitySource, Activity>();
+                userProfile = user;
+                userProfile = await Core.GetUserProfile(userProfile.Login); 
+                formattedEmailStr = EmailUriFormatter.GetFormattedEmailStr(userProfile.Email);
+                LoadAllUserPerformedEvents(userProfile.Login);
+                LoadAllUserFollowers(userProfile.Login);
+                LoadAllUserFollowings(userProfile.Login);
             }
         }
 
-        public void LoadAllUserPerformedEvents()
+        private void LoadAllUserPerformedEvents(string login)
         {
-            allUserPerformedEvents = new IncrementalLoadingCollection<UserPerformedActivitySource, Activity>();
+            UserPerformedActivitySource source = new UserPerformedActivitySource(login);
+            allUserPerformedEvents = new IncrementalLoadingCollection<UserPerformedActivitySource, Activity>(source);
+        }
+
+        private void LoadAllUserFollowers(string login)
+        {
+            UserFollowersSource source = new UserFollowersSource(login);
+            allUserFollowers = new IncrementalLoadingCollection<UserFollowersSource, Octokit.User>(source);
+        }
+
+        private void LoadAllUserFollowings(string login)
+        {
+            UserFollowingsSource source = new UserFollowingsSource(login);
+            allUserFollowings = new IncrementalLoadingCollection<UserFollowingsSource, Octokit.User>(source);
         }
     }
 }
