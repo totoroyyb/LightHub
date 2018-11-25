@@ -9,7 +9,14 @@ namespace LightHub.Converter
         {
             if (value is string && !string.IsNullOrEmpty((string)value))
             {
-                return new Uri((string)value);
+                if (value.ToString().Contains("mailto:") || value.ToString().Contains("https://") || value.ToString().Contains("http://"))
+                {
+                    return new Uri((string)value);
+                }
+                else
+                {
+                    return new Uri("http://" + (string)value);
+                }
             }
             return null;
         }

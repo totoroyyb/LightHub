@@ -43,11 +43,11 @@ namespace LightHub.View.OtherViews
             
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (user != null)
             {
-                ViewModel.LoadUserProfile(user);
+                await ViewModel.LoadUserProfile(user);
             }
         }
     }
