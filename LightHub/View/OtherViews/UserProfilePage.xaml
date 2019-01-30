@@ -10,8 +10,7 @@
     xmlns:vm="using:LightHub.ViewModels"
     mc:Ignorable="d"
     Loaded="Page_Loaded"
-    x:DefaultBindMode="OneWay"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    x:DefaultBindMode="OneWay">
 
     <Page.DataContext>
         <vm:UserProfilePageViewModel/>

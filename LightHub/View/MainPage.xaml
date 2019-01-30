@@ -14,13 +14,13 @@
             <ImageBrush ImageSource="/Assets/BGImage/Test.jpg"/>
         </Grid.Background>
 
-        <Grid>
-            <Grid.Background>
+        <Grid Background="{ThemeResource AcrylicMed}">
+            <!--<Grid.Background>
                 <AcrylicBrush TintColor="White"
                               TintOpacity="0.6"
                               BackgroundSource="Backdrop"
                               FallbackColor="White"/>
-            </Grid.Background>
+            </Grid.Background>-->
 
             <!--<TextBlock x:Name="AppTitle"
         xmlns:appmodel="using:Windows.ApplicationModel"
@@ -88,13 +88,19 @@
                     <x:String>LightHub</x:String>
                 </NavigationView.PaneTitle>
 
-                <Frame Name="MainFrame">
-                    <Frame.ContentTransitions>
-                        <TransitionCollection>
-                            <NavigationThemeTransition/>
-                        </TransitionCollection>
-                    </Frame.ContentTransitions>
-                </Frame>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Frame Name="MainFrame" Grid.Row="1">
+                        <Frame.ContentTransitions>
+                            <TransitionCollection>
+                                <NavigationThemeTransition/>
+                            </TransitionCollection>
+                        </Frame.ContentTransitions>
+                    </Frame>
+                </Grid>
             </NavigationView>
 
         </Grid>

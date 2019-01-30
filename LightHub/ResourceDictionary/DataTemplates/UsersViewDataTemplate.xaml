@@ -17,13 +17,7 @@
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="1">
-                <Grid.Background>
-                    <AcrylicBrush TintColor="White"
-                                  TintOpacity="0.3"
-                                  FallbackColor="White"
-                                  BackgroundSource="Backdrop"/>
-                </Grid.Background>
+            <Grid Grid.Row="1" Background="{ThemeResource AcrylicLow}">
                 <TextBlock Text="{Binding Login}"
                            HorizontalAlignment="Center" VerticalAlignment="Center"
                            TextWrapping="Wrap"/>

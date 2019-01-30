@@ -1,0 +1,42 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LightHub.ResourceDictionary.Theme">
+
+    <AcrylicBrush x:Key="AcrylicHostHigh"
+                  BackgroundSource="HostBackdrop"
+                  TintColor="White"
+                  TintOpacity="0.8"
+                  FallbackColor="White"/>
+
+    <AcrylicBrush x:Key="AcrylicHostMed"
+                  BackgroundSource="HostBackdrop"
+                  TintColor="White"
+                  TintOpacity="0.6"
+                  FallbackColor="White"/>
+
+    <AcrylicBrush x:Key="AcrylicHostLow"
+                  BackgroundSource="HostBackdrop"
+                  TintColor="White"
+                  TintOpacity="0.4"
+                  FallbackColor="White"/>
+
+    <AcrylicBrush x:Key="AcrylicHigh"
+                  BackgroundSource="Backdrop"
+                  TintColor="White"
+                  TintOpacity="0.8"
+                  FallbackColor="White"/>
+
+    <AcrylicBrush x:Key="AcrylicMed"
+                  BackgroundSource="Backdrop"
+                  TintColor="White"
+                  TintOpacity="0.6"
+                  FallbackColor="White"/>
+
+    <AcrylicBrush x:Key="AcrylicLow"
+                  BackgroundSource="Backdrop"
+                  TintColor="White"
+                  TintOpacity="0.4"
+                  FallbackColor="White"/>
+
+</ResourceDictionary>

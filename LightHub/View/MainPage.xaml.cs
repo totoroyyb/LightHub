@@ -45,28 +45,36 @@ namespace LightHub
                 {
                     case Const.NaviActivity:
                         MainFrame.Navigate(typeof(NewsPage));
+                        //sender.Header = "Activity";
                         break;
 
                     case Const.NaviNotif:
+                        //sender.Header = "Notification";
                         break;
 
                     case Const.NaviTrend:
+                        //sender.Header = "Trend";
                         break;
 
                     case Const.NaviIssue:
+                        //sender.Header = "Issue";
                         break;
 
                     case Const.NaviProfile:
                         MainFrame.Navigate(typeof(ProfilePage));
+                        //sender.Header = "My Profile";
                         break;
 
                     case Const.NaviMyRepos:
+                        //sender.Header = "My Repositories";
                         break;
 
                     case Const.NaviMyStarred:
+                        //sender.Header = "My Starred";
                         break;
 
                     case Const.NaviBookmarks:
+                        //sender.Header = "My Bookmark";
                         break;
                 }
 

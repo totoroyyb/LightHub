@@ -13,9 +13,11 @@
     <Style x:Key="SmallCornerRoundedLayer" TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}">
         <Setter Property="Height" Value="45"/>
         <Setter Property="Width" Value="45"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="5"/>
     </Style>
 
     <Style x:Key="LargeCornerRounded" TargetType="controls:ImageEx">
